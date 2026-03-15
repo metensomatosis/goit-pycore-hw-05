@@ -1,7 +1,10 @@
-def caching_fibonacci():
-    cache = {}
+from collections.abc import Callable
 
-    def fibonacci(n):
+
+def caching_fibonacci() -> Callable[[int], int]:
+    cache: dict[int, int] = {}
+
+    def fibonacci(n: int) -> int:
         if n <= 0:
             return 0
         if n == 1:
@@ -15,7 +18,8 @@ def caching_fibonacci():
     return fibonacci
 
 
-fib = caching_fibonacci()
+if __name__ == "__main__":
+    fib = caching_fibonacci()
 
-print(fib(10))  # 55
-print(fib(15))  # 610
+    print(fib(10))  # 55
+    print(fib(15))  # 610
